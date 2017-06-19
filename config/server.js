@@ -1,8 +1,9 @@
-const express = require('express')
-const webpack = require('webpack')
-const webpackMiddleware = require('webpack-dev-middleware')
-const path = require('path')
-const webpackConf = require('./webpack.config.js')
+var express = require('express')
+var webpack = require('webpack')
+var webpackMiddleware = require('webpack-dev-middleware')
+var proxyMiddleware = require('http-proxy-middleware')
+var path = require('path')
+var webpackConf = require('./webpack.config.js')
 
 var app = express()
 var compiler = webpack(webpackConf)
@@ -24,7 +25,17 @@ compiler.plugin('compilation', function (compilation){
         cb()
     })
 })
-
+// 添加api代理
+var proxyTable = {}
+Object.keys(proxyTable).forEach(function(name){
+    var options = proxyTable[name]
+    if (typeof options === 'string') {
+        options = { target: options }
+    }
+    app.use(proxyMiddleware(options.filter || name, options))
+})
+// h5 history api 支持
+app.use(require('connect-history-api-fallback')())
 
 var staticPath = '/static' //path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
