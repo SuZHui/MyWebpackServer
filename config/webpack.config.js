@@ -19,6 +19,9 @@ module.exports = {
             test: /\.js$/,
             loader: 'babel-loader',
             include: [resolve('src')]
+        },{
+            test: /\.(css|scss)$/,
+            loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
         }]
     },
     devtool: '#cheap-module-eval-source-map',
