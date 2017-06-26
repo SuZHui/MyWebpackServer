@@ -4,6 +4,7 @@ var webpackMiddleware = require('webpack-dev-middleware')
 var proxyMiddleware = require('http-proxy-middleware')
 var path = require('path')
 var webpackConf = require('./webpack.config.js')
+var userOption = require('./user.option')
 
 var app = express()
 var compiler = webpack(webpackConf)
@@ -41,4 +42,4 @@ var staticPath = '/static' //path.posix.join(config.dev.assetsPublicPath, config
 app.use(staticPath, express.static('./static'))
 
 
-app.listen(3100);
+app.listen(userOption.dev.port);
