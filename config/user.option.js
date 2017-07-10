@@ -7,6 +7,7 @@ module.exports = {
     },
     dev: {
         env: "development",
-        port: 3100
+        port: 3100,
+        proxyTable: {}
     }
 }

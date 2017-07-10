@@ -27,7 +27,7 @@ compiler.plugin('compilation', function (compilation){
     })
 })
 // 添加api代理
-var proxyTable = {}
+var proxyTable = userOption.dev.proxyTable
 Object.keys(proxyTable).forEach(function(name){
     var options = proxyTable[name]
     if (typeof options === 'string') {
