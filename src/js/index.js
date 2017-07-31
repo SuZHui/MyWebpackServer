@@ -1,6 +1,9 @@
-import '../css/index.scss'
+import React from 'react'
+import ReactDom from 'react-dom'
 
-window.onload = () => {
-    let name = "测试"
-    console.log(`这是一个${name}页面`)
-}
+import Index from '@/Components/Index'
+
+ReactDom.render(
+    <Index/>,
+    document.getElementById('root')
+)
