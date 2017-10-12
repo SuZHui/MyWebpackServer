@@ -29,4 +29,3 @@ const render = () => ReactDom.render(
 
 store.subscribe(render)
 render()
-console.log(21)
