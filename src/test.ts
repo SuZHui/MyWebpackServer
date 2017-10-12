@@ -15,7 +15,7 @@ let color: String = "blue"
 
 let list: Number[] = [1,2,3]
 
-let x: [String, Number] = ['1', 3]    //元祖
+let x: [String, Number] = ['1', 3]    //元祖  
 
 enum Color {Red, Green, Blue}    //枚举
 let c: Color = Color.Blue
